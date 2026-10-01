@@ -1,0 +1,52 @@
+agents:
+  - agent_id: research-agent
+    description: "Reads and summarizes public documents. High quality, slow."
+    performance:
+      latency_ms: 1200
+      success_rate: 0.99
+    capabilities:
+      allowed:
+        - read:public_documents
+        - search:web_cache
+      denied:
+        - read:secrets
+        - write:database
+        - execute:shell
+        - network:external
+        - read:credentials
+        - data_export
+
+  - agent_id: fast-research-agent
+    description: "Reads and summarizes public documents. Fast, but less detailed."
+    performance:
+      latency_ms: 150
+      success_rate: 0.95
+    capabilities:
+      allowed:
+        - read:public_documents
+        - search:web_cache
+      denied:
+        - read:secrets
+        - write:database
+        - execute:shell
+        - network:external
+        - read:credentials
+        - data_export
+
+  - agent_id: admin-agent
+    description: "Privileged agent for administrative tasks. Restricted to safe ops."
+    performance:
+      latency_ms: 500
+      success_rate: 0.99
+    capabilities:
+      allowed:
+        - read:public_documents
+        - read:internal_docs
+        - write:database
+        - search:web_cache
+      denied:
+        - read:secrets
+        - execute:shell
+        - network:external
+        - read:credentials
+        - data_export
