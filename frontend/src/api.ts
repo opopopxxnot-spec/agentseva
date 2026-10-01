@@ -13,7 +13,7 @@ import type {
   ToolResponse,
 } from './types'
 
-const BASE = '' // uses Vite proxy
+const BASE = import.meta.env.VITE_API_URL || ''
 
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(BASE + path)
